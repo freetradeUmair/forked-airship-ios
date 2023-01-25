@@ -107,6 +107,10 @@ open class PreferenceCenterViewController: UIViewController, UITableViewDataSour
         return UITableView.automaticDimension
     }
     
+    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
     open func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let sectionConfig = self.filteredSections?[section].section else {
             return nil
@@ -264,8 +268,6 @@ open class PreferenceCenterViewController: UIViewController, UITableViewDataSour
             if button.contentDescription != nil {
                 cell.alertButton.accessibilityLabel = button.contentDescription
             }
-            
-            cell.alertButton.contentEdgeInsets = UIEdgeInsets(top: 12, left: 16, bottom: 12, right: 16)            
         } else {
             cell.alertButton.isHidden = true
         }
