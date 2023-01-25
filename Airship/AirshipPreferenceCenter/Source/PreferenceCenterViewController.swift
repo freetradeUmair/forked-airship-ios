@@ -107,6 +107,10 @@ open class PreferenceCenterViewController: UIViewController, UITableViewDataSour
         return UITableView.automaticDimension
     }
     
+    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
     open func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let sectionConfig = self.filteredSections?[section].section else {
             return nil
@@ -254,7 +258,6 @@ open class PreferenceCenterViewController: UIViewController, UITableViewDataSour
         if let button = item.button {
             cell.alertButton.isHidden = false
             cell.alertButton.backgroundColor = self.style?.alertButtonBackgroundColor ?? .systemBlue
-            cell.alertButton.layer.cornerRadius = 5
             if let font = style?.alertButtonLabelFont {
                 cell.alertButton.titleLabel?.font = font
             }
