@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="ipad12_9" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,10 +18,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="aiT-Eh-6hg">
-                        <rect key="frame" x="57.5" y="20" width="299" height="110"/>
+                        <rect key="frame" x="16" y="16" width="382" height="118"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4oD-19-kVQ">
-                                <rect key="frame" x="0.0" y="25" width="60" height="60"/>
+                                <rect key="frame" x="0.0" y="29" width="60" height="60"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gAe-YZ-ILl">
                                         <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
@@ -44,23 +44,23 @@
                                     <constraint firstItem="gAe-YZ-ILl" firstAttribute="top" secondItem="4oD-19-kVQ" secondAttribute="top" id="q65-hn-l96"/>
                                 </constraints>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="qep-C8-MYU">
-                                <rect key="frame" x="75" y="8" width="224" height="94"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="qep-C8-MYU">
+                                <rect key="frame" x="75" y="10" width="307" height="98"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LAO-KF-iJ6">
-                                        <rect key="frame" x="0.0" y="0.0" width="219" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="302" height="50"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QaR-PU-ac7">
-                                        <rect key="frame" x="0.0" y="60" width="219" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="62" width="302" height="0.0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dbG-Qd-5BJ" customClass="UAPreferenceAlertButton">
-                                        <rect key="frame" x="0.0" y="70" width="52" height="24"/>
+                                        <rect key="frame" x="0.0" y="74" width="52" height="24"/>
                                         <inset key="contentEdgeInsets" minX="3" minY="3" maxX="3" maxY="3"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="Button"/>
@@ -74,16 +74,18 @@
                         </subviews>
                     </stackView>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="aiT-Eh-6hg" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="zNc-s0-mhG" secondAttribute="leading" constant="20" id="03V-vk-lhj"/>
+                    <constraint firstItem="aiT-Eh-6hg" firstAttribute="leading" secondItem="zNc-s0-mhG" secondAttribute="leading" constant="16" id="03V-vk-lhj"/>
                     <constraint firstItem="aiT-Eh-6hg" firstAttribute="centerY" secondItem="zNc-s0-mhG" secondAttribute="centerY" id="HvH-Fl-Nl1"/>
-                    <constraint firstAttribute="bottom" secondItem="aiT-Eh-6hg" secondAttribute="bottom" constant="20" id="ONc-ue-aSE"/>
+                    <constraint firstAttribute="bottom" secondItem="aiT-Eh-6hg" secondAttribute="bottom" constant="16" id="ONc-ue-aSE"/>
                     <constraint firstItem="aiT-Eh-6hg" firstAttribute="centerX" secondItem="zNc-s0-mhG" secondAttribute="centerX" id="OxX-cG-OYH"/>
                     <constraint firstItem="aiT-Eh-6hg" firstAttribute="centerX" secondItem="zNc-s0-mhG" secondAttribute="centerX" id="smA-8j-eRR"/>
-                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="aiT-Eh-6hg" secondAttribute="trailing" constant="20" id="ugA-yi-vyE"/>
-                    <constraint firstItem="aiT-Eh-6hg" firstAttribute="top" secondItem="zNc-s0-mhG" secondAttribute="top" constant="20" id="wgK-4l-ny5"/>
+                    <constraint firstAttribute="trailing" secondItem="aiT-Eh-6hg" secondAttribute="trailing" constant="16" id="ugA-yi-vyE"/>
+                    <constraint firstItem="aiT-Eh-6hg" firstAttribute="top" secondItem="zNc-s0-mhG" secondAttribute="top" constant="16" id="wgK-4l-ny5"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="alertButton" destination="dbG-Qd-5BJ" id="UsR-kB-adt"/>
                 <outlet property="alertDescription" destination="QaR-PU-ac7" id="49q-zP-5nd"/>

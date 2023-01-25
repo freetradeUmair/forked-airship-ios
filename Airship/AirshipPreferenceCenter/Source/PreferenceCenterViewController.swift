@@ -254,7 +254,6 @@ open class PreferenceCenterViewController: UIViewController, UITableViewDataSour
         if let button = item.button {
             cell.alertButton.isHidden = false
             cell.alertButton.backgroundColor = self.style?.alertButtonBackgroundColor ?? .systemBlue
-            cell.alertButton.layer.cornerRadius = 5
             if let font = style?.alertButtonLabelFont {
                 cell.alertButton.titleLabel?.font = font
             }
@@ -265,6 +264,8 @@ open class PreferenceCenterViewController: UIViewController, UITableViewDataSour
             if button.contentDescription != nil {
                 cell.alertButton.accessibilityLabel = button.contentDescription
             }
+            
+            cell.alertButton.contentEdgeInsets = UIEdgeInsets(top: 12, left: 16, bottom: 12, right: 16)            
         } else {
             cell.alertButton.isHidden = true
         }

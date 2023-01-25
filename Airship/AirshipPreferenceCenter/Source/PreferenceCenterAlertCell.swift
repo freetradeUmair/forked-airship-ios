@@ -33,4 +33,8 @@ open class PreferenceCenterAlertCell: UITableViewCell {
     @IBOutlet weak var alertIcon: UIImageView!
     @IBOutlet weak var alertButton: PreferenceAlertButton!
     
+    open override func layoutSubviews() {
+        super.layoutSubviews()
+        alertButton.layer.cornerRadius = alertButton.bounds.height / 2
+    }
 }
