@@ -3,6 +3,62 @@
 
 [Migration Guides](https://github.com/urbanairship/ios-library/tree/main/Documentation/Migration)
 
+## Version 16.12.2, June 28, 2023
+Patch release that fixes an issue with modular header on podspec for `AirshipServiceExtension` and `AirshipContentExtension`
+and a channel registration issue where if the channel's metadata changes during an update task, a new task would not be queued to sync with Airship until the next foreground.
+
+### Changes
+- Enable modular header for `AirshipServiceExtension` and `AirshipContentExtension`.
+- Fixed channel registration task queuing
+
+## Version 16.12.1, June 14, 2023
+Patch release that fixes app deep links that use the `uairship://` prefix. Any `uairship://` deep links that are not handled by Airship directly will now be delivered to the `DeepLinkDelegate`.
+
+### Changes
+- Allow the `DeepLinkDelegate` to process unhandled `uairship://` deep links
+
+## Version 16.12.0 June 12, 2023
+Minor release that adds `aspectRatio` to HTML and Modal IAA styles and a new config option `autoPauseInAppAutomationOnLaunch` to always pause IAA during app
+init to be enabled later.
+
+### Changes
+- Fixed channel restore from encrypted backups
+- Added aspectRatio to HTML and Modal IAA styles
+- Added `autoPauseInAppAutomationOnLaunch` config option
+- Fixed parsing deep link and open external URLs that contain invalid URL characters
+
+## Version 16.11.3 March 24, 2023
+Patch release that fixing Contact update merging order, improves Scene/Survey accessibility and reporting.
+
+### Changes
+- Fixed Contact update merge order, resolving a Preference Center bug that could lead to unexpected subscription states in some circumstances.
+- Improved Scene/Survey accessibility and fixed a reporting bug related to form display events.
+- Fixed an issue with downgrading to a version older than 16.10.1 would cause the channel to be recreated.
+- Added support for transparent WebView backgrounds in HTML In-App Automations
+
+## Version 16.11.2 March 2, 2023
+Patch release that fixes a regression introduced in 16.11.0 that disables Survey's submit button and inputs, and added accessibility font scaling to Scenes & Surveys.
+
+### Changes
+- Scale fonts for Scenes & Surveys
+- Fixed Survey enablement regression
+
+## Version 16.11.1 February 28, 2023
+Patch release that exposes some Preference Center classes to Objective-C.
+
+### Changes
+- Exposes `UAPreferenceCenterResources`, `UAPreferenceCenterViewController` and `UAPreferenceAlertItemButton`to obj-c.
+
+## Version 16.11.0 February 22, 2023
+Minor release that fixes a potential channel restore issue on second run. The impact should be small since the channel create will return the same channel ID if the app has a device token or the app installed the Message Center module. 
+
+### Changes
+- Fixed app restore detection false positive on second run
+- Added new optional `PushNotificationDelegate` method `extendPresentationOptions(_:notification:completionHandler)` that allows returning foreground presentation options with a callback instead of synchronously
+- Added new `Config` method `validate(logIssues:)` to prevent logging on the config.
+- Fixed nil URL log message when attempting to create a channel on the first run. The channel will now wait until the URL is available before attempting to be created. This should not cause any real difference in behavior, it only prevents the log message from being logged.
+- Fixed Xcode 14.3 beta build issues
+
 ## Version 16.10.7 January 17, 2023
 Patch release that adds a potential mitigation for some iOS 16 devices crashing when reading and writing to UserDefaults. We have not been able to reproduce the issue and seems limited to a small number of iOS 16 devices.
 
