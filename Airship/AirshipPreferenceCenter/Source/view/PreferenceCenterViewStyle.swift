@@ -126,7 +126,7 @@ public struct DefaultPreferenceCenterViewStyle: PreferenceCenterViewStyle {
         let theme = configuration.preferenceCenterTheme
         ScrollView {
             LazyVStack(alignment: .leading) {
-                if let subtitle = state.config.display?.subtitle {
+                if let subtitle = state.config.display?.subtitle, !subtitle.isEmpty {
                     Text(subtitle)
                         .textAppearance(
                             theme.preferenceCenter?.subtitleAppearance,
