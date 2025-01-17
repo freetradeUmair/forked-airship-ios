@@ -122,8 +122,8 @@ public struct DefaultLabeledSectionBreakStyle: LabeledSectionBreakStyle {
                     base: PreferenceCenterDefaults.labeledSectionBreakTitleAppearance,
                     colorScheme: colorScheme
                 )
-                .padding(.vertical, PreferenceCenterDefaults.smallPadding/2)
-                .padding(.horizontal, PreferenceCenterDefaults.smallPadding)
+                .padding(.top, 24)
+                .padding(.bottom, 12)
                 .background(backgroundColor)
         }
     }

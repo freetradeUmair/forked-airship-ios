@@ -142,17 +142,19 @@ public struct DefaultCommonSectionViewStyle: CommonSectionViewStyle {
                                 )
                         }
                     }
-                    .padding(.bottom, PreferenceCenterDefaults.smallPadding)
+                    .padding(.bottom, 12)
                 }
 
                 ForEach(0..<section.items.count, id: \.self) { index in
                     makeItem(
                         section.items[index],
                         state: configuration.state
-                    ).airshipApplyIf(index != section.items.count - 1) {
-                        $0.padding(.bottom, PreferenceCenterDefaults.smallPadding)
-                    }
+                    )
+                    .padding(.vertical, 4)
 
+                    if index != section.items.count - 1 {
+                        Divider()
+                    }
                 }
             }
             .airshipApplyIf(configuration.isLast) {
@@ -161,10 +163,6 @@ public struct DefaultCommonSectionViewStyle: CommonSectionViewStyle {
 #if os(tvOS)
             .focusSection()
 #endif
-
-            if !configuration.isLast {
-                Divider().padding(.vertical)
-            }
         }
     }
 

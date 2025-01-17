@@ -39,6 +39,9 @@ public struct MessageCenterTheme {
     /// The font to use for message cell titles.
     public var cellTitleFont: Font? = .headline
 
+    /// The font to use for message cell titles.
+    public var cellSubtitleFont: Font? = .headline
+
     /// The font to use for message cell dates.
     public var cellDateFont: Font? = .subheadline
 
@@ -53,6 +56,12 @@ public struct MessageCenterTheme {
 
     /// The dark mode color for message cell titles.
     public var cellTitleColorDark: Color? = nil
+
+    /// The regular color for message cell titles.
+    public var cellSubtitleColor: Color? = .secondary
+
+    /// The regular color for message cell titles.
+    public var cellSubtitleColorDark: Color? = nil
 
     /// The regular color for message cell dates.
     public var cellDateColor: Color? = .secondary
@@ -154,11 +163,14 @@ public struct MessageCenterTheme {
         iconsEnabled: Bool = false,
         placeholderIcon: Image? = nil,
         cellTitleFont: Font? = nil,
+        cellSubtitleFont: Font? = nil,
         cellDateFont: Font? = nil,
         cellColor: Color? = nil,
         cellColorDark: Color? = nil,
         cellTitleColor: Color? = nil,
         cellTitleColorDark: Color? = nil,
+        cellSubtitleColor: Color? = nil,
+        cellSubtitleColorDark: Color? = nil,
         cellDateColor: Color? = nil,
         cellDateColorDark: Color? = nil,
         cellSeparatorStyle: SeparatorStyle? = nil,
@@ -196,11 +208,14 @@ public struct MessageCenterTheme {
         self.iconsEnabled = iconsEnabled
         self.placeholderIcon = placeholderIcon
         self.cellTitleFont = cellTitleFont
+        self.cellSubtitleFont = cellSubtitleFont
         self.cellDateFont = cellDateFont
         self.cellColor = cellColor
         self.cellColorDark = cellColorDark
         self.cellTitleColor = cellTitleColor
         self.cellTitleColorDark = cellTitleColorDark
+        self.cellSubtitleColor = cellSubtitleColor
+        self.cellSubtitleColorDark = cellSubtitleColorDark
         self.cellDateColor = cellDateColor
         self.cellDateColorDark = cellDateColorDark
         self.cellSeparatorStyle = cellSeparatorStyle

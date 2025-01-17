@@ -113,7 +113,7 @@ private struct MessageCenterListContentView: View {
     private static let iconWidth: Double = 60.0
     private static let placeHolderImageName: String = "photo"
     private static let unreadIndicatorImageName: String = "circle.fill"
-    private static let unreadIndicatorSize: Double = 8.0
+    private static let unreadIndicatorSize: Double = 10.0
     private static let noIconSpacerWidth: Double = 20.0
 
     @Environment(\.colorScheme)
@@ -156,20 +156,21 @@ private struct MessageCenterListContentView: View {
         let foregroundColor = colorScheme.airshipResolveColor(light: theme.unreadIndicatorColor, dark: theme.unreadIndicatorColorDark) ?? colorScheme.airshipResolveColor(light: theme.cellTintColor, dark: theme.cellTintColorDark)
 
         if self.message.unread {
-            Image(systemName: MessageCenterListContentView.unreadIndicatorImageName)
-                .foregroundColor(
-                    foregroundColor
-                )
-                .frame(
-                    width: MessageCenterListContentView.unreadIndicatorSize,
-                    height: MessageCenterListContentView.unreadIndicatorSize
-                )
+            if #available(iOS 15, *) {
+                Circle()
+                    .fill(foregroundColor ?? .clear)
+                    .frame(
+                        width: MessageCenterListContentView.unreadIndicatorSize,
+                        height: MessageCenterListContentView.unreadIndicatorSize
+                    )
+                    .padding(.top, 6)
+            }
         }
     }
 
     @ViewBuilder
     func makeMessageInfo() -> some View {
-        VStack(alignment: .leading, spacing: 5) {
+        VStack(alignment: .leading, spacing: 8) {
             Text(self.message.title)
                 .font(theme.cellTitleFont)
                 .foregroundColor(colorScheme.airshipResolveColor(light: theme.cellTitleColor, dark: theme.cellTitleColorDark))
@@ -177,9 +178,9 @@ private struct MessageCenterListContentView: View {
 
             if let subtitle = self.message.subtitle {
                 Text(subtitle)
-                    .font(.subheadline)
+                    .font(theme.cellSubtitleFont)
+                    .foregroundColor(colorScheme.airshipResolveColor(light: theme.cellSubtitleColor, dark: theme.cellSubtitleColorDark))
                     .accessibilityHidden(true)
-
             }
 
             Text(self.message.sentDate, style: .date)
@@ -191,7 +192,7 @@ private struct MessageCenterListContentView: View {
 
     @ViewBuilder
     var body: some View {
-        HStack(alignment: .top, spacing: 5) {
+        HStack(alignment: .top, spacing: 8) {
             if (theme.iconsEnabled) {
                 makeIcon()
                     .padding(.trailing)
@@ -205,6 +206,6 @@ private struct MessageCenterListContentView: View {
             Spacer()
         }
         .overlay(makeUnreadIndicator(), alignment: .topLeading)
-        .padding(8)
+        .padding(.vertical, 12)
     }
 }
