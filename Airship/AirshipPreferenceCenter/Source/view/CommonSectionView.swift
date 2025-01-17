@@ -161,10 +161,6 @@ public struct DefaultCommonSectionViewStyle: CommonSectionViewStyle {
 #if os(tvOS)
             .focusSection()
 #endif
-
-            if !configuration.isLast {
-                Divider().padding(.vertical)
-            }
         }
     }
 
