@@ -76,7 +76,8 @@ public struct MessageCenterListView: View {
     @ViewBuilder
     private func makeCell(
         item: MessageCenterListItemViewModel,
-        messageID: String
+        messageID: String,
+        isLast: Bool
     ) -> some View {
         let accessibilityLabel = String(format: item.message.unread ? "ua_message_unread_description".messageCenterLocalizedString : "ua_message_description".messageCenterLocalizedString, item.message.title,  AirshipDateFormatter.string(fromDate: item.message.sentDate, format: .relativeShortDate))
 
@@ -84,7 +85,8 @@ public struct MessageCenterListView: View {
             destination: makeDestination(messageID: messageID, title: item.message.title)
         ) {
             MessageCenterListItemView(viewModel: item)
-        }.accessibilityLabel(
+        }
+        .accessibilityLabel(
             accessibilityLabel
         )
         .accessibilityHint(
@@ -92,21 +94,26 @@ public struct MessageCenterListView: View {
         )
 
         if #available(iOS 15.0, *) {
-            cell.listRowBackground(colorScheme.airshipResolveColor(light: theme.cellColor, dark: theme.cellColorDark))
+            cell
+                .listRowBackground(colorScheme.airshipResolveColor(light: theme.cellColor, dark: theme.cellColorDark))
                 .listRowSeparator(
-                    (theme.cellSeparatorStyle == SeparatorStyle.none)
-                        ? .hidden : .automatic
+                    isLast ? .hidden : (theme.cellSeparatorStyle == SeparatorStyle.none) ? .hidden : .automatic
                 )
-                .listRowSeparatorTint(colorScheme.airshipResolveColor(light: theme.cellSeparatorColor, dark: theme.cellSeparatorColorDark))
+                .listRowSeparatorTint(
+                    colorScheme.airshipResolveColor(
+                        light: theme.cellSeparatorColor,
+                        dark: theme.cellSeparatorColorDark
+                    )
+                )
         } else {
             cell.listRowBackground(colorScheme.airshipResolveColor(light: theme.cellColor, dark: theme.cellColorDark))
         }
     }
 
     @ViewBuilder
-    private func makeCell(messageID: String) -> some View {
+    private func makeCell(messageID: String, isLast: Bool) -> some View {
         if let item = self.viewModel.messageItem(forID: messageID) {
-            makeCell(item: item, messageID: messageID)
+            makeCell(item: item, messageID: messageID, isLast: isLast)
                 .tag(messageID)
         } else {
             EmptyView()
@@ -116,8 +123,12 @@ public struct MessageCenterListView: View {
     @ViewBuilder
     private func makeList() -> some View {
         let list = List(selection: $selection) {
-            ForEach(self.messageIDs, id: \.self) { messageID in
-                makeCell(messageID: messageID)
+            ForEach(
+                Array(zip(self.messageIDs.indices, self.messageIDs)),
+                id: \.0
+            ) { index, messageID in
+                let isLastCell = index == self.messageIDs.count - 1
+                makeCell(messageID: messageID, isLast: isLastCell)
             }
             .onDelete { offsets in
                 delete(
@@ -142,7 +153,7 @@ public struct MessageCenterListView: View {
                 .map { $0.id }
             }
         }
-
+        .listStyle(.plain)
 
         if #available(iOS 15.0, *) {
             list.refreshable {
