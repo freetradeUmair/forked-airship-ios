@@ -116,7 +116,7 @@ public struct DefaultChannelSubscriptionViewStyle: ChannelSubscriptionViewStyle 
 
         if configuration.displayConditionsMet {
             Toggle(isOn: configuration.isSubscribed) {
-                VStack(alignment: .leading) {
+                VStack(alignment: .leading, spacing: 4) {
                     if let title = item.display?.title {
                         Text(title)
                             .textAppearance(
